@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+
+  --color-marca-50: #eef8f0;
+  --color-marca-100: #d6efdb;
+  --color-marca-200: #aedfb8;
+  --color-marca-400: #5cbf6c;
+  --color-marca-500: #3aa64a;
+  --color-marca-600: #2e8a3c;
+  --color-marca-700: #256e31;
+  --color-marca-900: #153f1c;
+
+  --color-grafito-50: #f5f6f7;
+  --color-grafito-100: #e9ebed;
+  --color-grafito-200: #d4d8dc;
+  --color-grafito-400: #8a929b;
+  --color-grafito-500: #5f6770;
+  --color-grafito-700: #2f353b;
+  --color-grafito-800: #1f2428;
+  --color-grafito-900: #15181b;
+  --color-grafito-950: #0d0f11;
+}
+
+@layer base {
+  body {
+    @apply bg-grafito-50 text-grafito-900 antialiased;
+  }
+  ::selection {
+    @apply bg-marca-200;
+  }
+}
+
+@layer components {
+  .tarjeta {
+    @apply rounded-2xl border border-grafito-100 bg-white shadow-[0_1px_2px_rgba(16,24,40,0.04)];
+  }
+  .etiqueta {
+    @apply mb-1.5 block text-xs font-semibold uppercase tracking-wide text-grafito-500;
+  }
+  .campo {
+    @apply block w-full rounded-lg border border-grafito-200 bg-white px-3.5 py-2.5 text-[15px] text-grafito-900 placeholder:text-grafito-400 transition outline-none focus:border-marca-500 focus:ring-4 focus:ring-marca-500/15;
+  }
+  .boton {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-marca-500 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-marca-600 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-marca-500/30 disabled:opacity-60;
+  }
+  .boton-sec {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-grafito-200 bg-white px-4 py-2.5 text-sm font-semibold text-grafito-700 transition hover:bg-grafito-50 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-grafito-200;
+  }
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 14mm;
+  }
+  body {
+    background: white !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-plain {
+    box-shadow: none !important;
+    border-color: #d4d8dc !important;
+  }
+}
